@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--[if lt IE 9]><script src="js/html5shiv.js"></script>
+ 
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.easing1.3.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <style>
+        #result1,#result2{
+            position: absolute; width: 100%;height: 100%;top:0px;
+        }
+        #caidao{ z-index: 99;}
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#result1").hide();
+            $("#result2").hide();
+            var ss=44;
+            var jinbi=0;
+            var int=setInterval(function(){
+                if(ss==42){
+                    $(".tc_a").hide();
+                }
+                if(ss>0){
+                    $("#daojishi").html("倒计时："+ss+"s");
+                    ss--;
+                }
+                if(ss==0)                {
+                    $("#result1-jinbi").html(jinbi);                    $("#result2-jinbi").html(jinbi);
+
+                    if(jinbi>100){
+                        $("#result2").show();
+                    }else{
+                        $("#result1").show();
+                    }
+                    $("#caidao").removeClass("bounce-up-down5");
+                }
+                if(ss==34){
+                    $("#caidao").addClass("bounce-up-down2").removeClass("bounce-up-down1");
+                }
+                if(ss==24){
+                    $("#caidao").addClass("bounce-up-down3").removeClass("bounce-up-down2");
+                }
+                if(ss==14){
+                    $("#caidao").addClass("bounce-up-down4").removeClass("bounce-up-down3");
+                }
+                if(ss==4){
+                    $("#caidao").addClass("bounce-up-down5").removeClass("bounce-up-down4");
+                }
+            },1000);
+            $("#caidao").bind("click",function(){
+                $("#result1-jinbi").html(jinbi);                    $("#result2-jinbi").html(jinbi);
+
+                if(jinbi>500){
+                    $("#result2").show();
+                }else{
+                    $("#result1").show();
+                }
+                clearInterval(int);
+            });
+            $("#jinbidui").bind("click",function(){
+                jinbi=jinbi+ Math.floor(Math.random() *100);
+                console.log(jinbi);
+                $("#jinbi").html("金币："+jinbi);
+                $("#jinbi-img").removeClass("zoomInOut");
+                setTimeout(function(){
+                    $("#jinbi-img").addClass("zoomInOut");
+                },10);
+            });
+            //分享
+            $("#fenxiang").bind("click",function(){
+
+            });
+            $("#recome").bind("click",function(){
+                window.location.href="index.html";
+            });
+            $("#recome2").bind("click",function(){
+                window.location.href="index.html";
+            });
+
+            /**
+             * lowerValue 最小值
+             * upperValue 最大值
+             */
+            function selectFrom(lowerValue, upperValue){
+                //取值范围总数
+                var choices = upperValue - lowerValue + 1;
+                return Math.floor(Math.random() * choices + lowerValue);
+            }
+            var width=$(window).width();
+            var a=setInterval(function(){foo()},300);
+            function foo(){
+                var num = selectFrom(0,50);
+                $("body").append('<img style="position:absolute; width:10%; display:block; top:3%;left:'+num*2+'%;" class="animated2 fadeOutDown" src="img/feiconi.png" alt=""/>');
+            }
+        })
+
+    </script>
+</head>
+<body style="background: url(img/bg_2.png) no-repeat; background-size: 100%;">
+    <!--弹窗-->
+    <div class="tc_a">
+        <p>点击金币堆，<m class="colffff00 fwb" style="font-size: 1.2em;">45秒</m>内抢的金币越多中大额红包的概率越大，注意避开铡刀哦~ 祝君好运！</p>
+    </div>
+
+    <!--弹窗结束-->
+    <div>
+        <span class="colffff00 ml_2">
+            <img src="img/time.png" width="18" class="img_pos" />
+            <span id="daojishi" style="font-size: 0.8em;">倒计时：45s</span>
+        </span>
+        <span class="mr_2 colffff00 fr mt_1">
+            <img src="img/coni.png" width="18" />
+            <span id="jinbi" style="font-size: 0.8em;">金币：0</span>
+        </span>
+    </div>
+    <div class="textac bounce-up-down1" id="caidao"  style="position:absolute; top:8%; left: 0px; ">
+        <span style="position: relative; left: 0.5%;">
+            <img src="img/dao.png" width="60.5%"/>
+        </span>
+    </div>
+
+
+    <div class="textac" style="margin-top: 88%;">
+        <span id="jinbidui"  style="position: relative; right: 2%;">
+            <img id="jinbi-img" src="img/hand.png" width="40%" class="animated zoomInOut"/>
+        </span>
+    </div>
+
+    <!--结果1-->
+    <div id="result1">
+    <div class="bg_tc_hui">
+    </div>
+    <div>
+
+        <div class="jg_tc">
+            <p>摔！抢了<span id="result1-jinbi">870</span> 金币还没抢到现金红包！</p>
+            <p>（表生气嘛，点击“求安慰”还有小惊喜哦~）</p>
+            <p>手机没抢够，还可以到电脑来抢，登录海尔商城官网抢现金红包最高1111元！</p>
+        </div>
+        <div class="jinbi_pos">
+            <p>
+					<span class="jinb_a">
+						<img src="img/feiconi.png" width="20%"/>
+					</span>
+					<span class="jinb_c" style="top: -20px;left: 100%;">
+						<img src="img/feiconi.png" width="20%"/>
+					</span>
+            </p>
+            <p><img src="img/feiconi.png" width="20%" class="jinb_d"/></p>
+            <p style="position: relative;top: 280px;left: 100%;">
+                <img src="img/feiconi.png" width="20%"/>
+                <img src="img/feiconi.png" width="20%" style="position: relative;top: -50px;left: 15%;"/>
+            </p>
+        </div>
+        <div class="btn_pos" style="position: absolute;">
+            <span id="fenxiang"><img src="img/qiuanwei.png" width="40%"/></span>
+            <span id="recome"><img src="img/zaiqiangyici.png" width="40%" class="ml_2"/></span>
+        </div>
+    </div>
+    </div>
+
+    <!--结果2-->
+    <div id="result2">
+        <div class="bg_tc_hui">
+        </div>
+        <div>
+
+            <div class="jg_tc">
+                <p>厉害！抢到<span id="result2-jinbi">1314</span> 金币，还抢到了2元红包哦！</p>
+                <p style="margin-top: 5%;">手机没抢够，还可以到电脑来抢，登录海尔商城官网抢现金红包最高1111元！</p>
+            </div>
+            <div class="jinbi_pos">
+                <p>
+                        <span class="jinb_a">
+                            <img src="img/feiconi.png" width="20%"/>
+                        </span>
+                        <span class="jinb_c" style="top: -20px;left: 100%;">
+                            <img src="img/feiconi.png" width="20%"/>
+                        </span>
+                </p>
+
+                <p style="position: relative;top: 300px;left: 100%;">
+                    <img src="img/feiconi.png" width="20%"/>
+                    <img src="img/feiconi.png" width="20%" style="position: relative;top: -50px;left: 15%;"/>
+                </p>
+            </div>
+            <div class="btn_pos" style="left: 30%;">
+                <span id="recome2"><img src="img/zaiqiangyici.png" width="60%" class="ml_2"/></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

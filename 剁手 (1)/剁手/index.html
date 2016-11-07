@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <!--[if lt IE 9]><script src="js/html5shiv.js"></script>
+   
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <script type="text/javascript">
+        $(function () {
+//             $(".tanchuang").show();
+            $('#close').bind('click', function () {
+                $(".tanchuang").hide();
+
+            });
+            $('#newhref').bind('click', function () {
+                $(".tanchuang").show();
+                // window.location.href = '';
+            })
+            $("#begin-btn").bind('click', function () {
+            	monitor('click',0,'开始游戏');
+                window.location.href = '<?php echo url('Index','chopHand');?>';
+            });
+        })
+
+    </script>
+</head>
+<body>
+    <div class="index1-bg"></div>
+    <div class="index1-1"></div>
+    <div class="index1-2"></div>
+    <div class="index1-3" id="begin-btn"></div>
+    <div class="index1-4"><u id="newhref">活动规则 >></u></div>
+    <!--分享弹窗-->
+    <div class="tanchuang" style="display:none">
+        <div class="bg_tc_hui" >
+        </div>
+        <div class="index-tanchuang" >
+        	<div class="index1-close" id="close"></div>
+        </div>
+    </div>
+</body>
+</html>
+<?php tpl('shareAndMonitor');?>

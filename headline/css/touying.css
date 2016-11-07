@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+}
+a{ text-decoration: none;}
+body{ background-color: #efdcb6; font-family: "微软雅黑";}
+ul{ list-style: none;}
+.touying1{
+    background: url(../img/ty/bg.png) top center no-repeat;
+    display: block;
+    min-width: 1024px;
+    min-height: 768px;
+}
+.touying1-c{
+    width: 865px;
+    padding-top: 130px;
+    margin: 0 auto;
+    position: relative;
+}
+.touying1-c ul{
+    width: 100%;
+    height: 399px;
+    overflow-y: scroll;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+.touying1-c ul li{
+    width: 100%;
+    float: left;
+    margin: 10px 0px;
+}
+.touying1-c ul li span{ display: block; float: left;s}
+.touying1-c .ty-ding{ width: 110px; color: #f7b52c; font-size: 18px;}
+.touying1-c .ty-num{ width:50px; color: #ffe100; font-size: 18px; padding-left: 10px;}
+.touying1-c .ty-info{ width: 650px; color: #fff; font-size: 24px; padding-left: 20px;}
+.ty-chakan{ position: absolute; bottom: -90px; right: 0px;}
+.touying2{
+    background: url(../img/ty/bg2.jpg) top center no-repeat;
+    display: block;
+    min-width: 1024px;
+    min-height: 768px;
+}
+.touying2-c{
+    width: 1040px;
+    margin: 0 auto;
+    position: relative;
+}
+.touying2 .ty2-1, .touying2 .ty2-2, .touying2 .ty2-3, .touying2 .ty2-4{ position: absolute; display: block; width: 400px;}
+.touying2 .ty2-1{
+    top: 280px;
+    right: 0px;
+    text-align: center;
+    font-size: 30spx;
+    color:#be1a20;
+    font-weight: bold;
+}
+.touying2 .ty2-1 span{font-size: 50px;}
+.touying2 .ty2-2{
+    top:380px;
+    right: 0px;
+    font-size: 34px;
+    color: #000;
+    font-weight: bold;
+}
+.touying2 .ty2-3
+{
+    color: #796a56;
+    font-size: 20px;
+    right: 0px;
+    text-align: right;
+    top: 472px;
+}
+.touying2 .ty2-4
+{
+    color: #796a56;
+    font-size: 22px;
+    right: 0px;
+    top: 546px;
+}
+.touying2 .ty2-4 a{ color: #796a56;}

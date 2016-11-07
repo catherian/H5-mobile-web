@@ -1,0 +1,334 @@
+﻿@charset "utf-8";
+/* CSS Document */
+*{
+    margin:0;
+    padding:0;
+}
+a{ text-decoration: none;}
+/* All */
+html { font-size:50px; }
+/* iPhone 4/5 */
+@media (min-width:320px){
+    html { font-size:50px; }
+}
+
+/* Android */
+@media (min-width:360px){
+    html { font-size:56.25px; }
+}
+/* iPhone6 */
+@media (min-width:375px){
+    html { font-size:58.59375px; }
+}
+/* iPhone6 Plus */
+@media (min-width:414px){
+    html { font-size:64.6875px;}
+}
+
+html,body {
+    height:100%;
+    -webkit-user-select: none;
+	overflow:hidden;
+}
+img{
+    width: 100%;
+}
+ul{
+    list-style: none;
+}
+body{
+    font-family: '微软雅黑';
+    width: 100%;height:100%;
+    overflow: hidden;
+}
+.index1-bg{
+    display: block; position: absolute; top:0px; width: 100%; height: 100%;
+    background: url("../img/index-bg1.jpg") center center no-repeat #f63430;
+    background-size: cover;
+}
+.index1-1{
+    display: block; position: absolute;
+    top:1rem; left: 0rem; right: 0rem; margin: 0 auto;
+    width: 5.53rem; height: 2.86rem;
+    background: url("../img/index-font.png") no-repeat;
+    background-size: cover;
+}
+.index1-2{
+    display: block;
+    position: absolute;
+    top: 0.9rem;
+    left: -0.4rem;
+    right: 0rem;
+    margin: 0 auto;
+    width: 4.6rem;
+    height: 7.6rem;
+    background: url("../img/body.png") no-repeat;
+    background-size: 100%;
+}
+.index1-3{
+    display: block; position: absolute;
+    top:8.6rem; left: 0rem; right: 0rem; margin: 0 auto;
+    width: 3rem; height: 0.67rem;
+    background: url("../img/kaishi_btn.gif") no-repeat;
+    background-size: cover;
+}
+.index1-4{
+    display: block; position: absolute;
+    top:9.5rem; left: 0rem;
+    width: 100%;
+    text-align:center; color: #fff;
+    font-size: 0.3rem;
+}
+.bg_tc_hui{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    top:0px;
+    z-index: 99;
+}
+.index-tanchuang{
+/*     display: block; position: absolute;
+    top:2rem; left: 0rem; right:0rem; margin: 0 auto;
+    width:6rem; height: 6.8rem;
+    background: url("../img/guize.jpg") no-repeat;
+    background-size: cover;
+    z-index: 100; */
+    display: block;
+    position: absolute;
+    height: 475px;
+    left: 50%;
+    width: 300px;
+    background: url(../img/guize.jpg) no-repeat;
+    background-size: 100%;
+    z-index: 100;
+    margin-left: -150px;
+    top: 50%;
+    margin-top: -235px;
+}
+.index1-close{
+    display: block; position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    width:0.35rem; height:0.35rem;
+    background: url("../img/xx.png") no-repeat;
+    background-size: cover;
+    z-index: 101;
+}
+/*第二页*/
+.index2-1-left{
+    display: block; position: absolute;
+    top:0.2rem; left:0.2rem;
+    font-size: 0.28rem;
+    color: #fdf602;
+}
+.index2-1-right{
+    display: block; position: absolute;
+    top:0.2rem; right:0rem;
+    font-size: 0.28rem;
+    color: #fdf602;
+
+}
+.index2-1-left img,.index2-1-right img{
+    width: 15%;padding-right: 0.1rem;
+    float: left;
+}
+.right-icon{
+	margin-top: 3px;
+}
+.index2-dao{
+    display: block; position: absolute;
+    top:1.2rem; left:0.05rem; right: 0rem; margin: 0 auto;
+    width:4.55rem; height:1.07rem;
+    background: url("../img/dao.png") no-repeat;
+    background-size: cover;
+}
+.index2-door{
+    display: block;
+    position: absolute;
+    top:1rem;
+    left:0rem;
+    right: 0rem;
+    margin: 0 auto;
+    width: 5.9rem;
+    height: 8.25rem;
+    background: url("../img/index2-door.png") no-repeat;
+    background-size: cover;
+}
+.index2-door2{
+    display: block;
+    position: absolute;
+    top: 6.5rem;
+    left:0rem;
+    right: 0rem;
+    margin: 0 auto;
+    width: 6rem;
+    height: 1.25rem;
+    background: url("../img/index2-door2.png") no-repeat;
+    background-size: cover;
+}
+.index2-font{
+    display: block; position: absolute;
+    top:3rem; left:0rem; right: 0rem; margin: 0 auto;
+    width:4.3rem; height:2.8rem;
+    background: url("../img/index2-font.gif") no-repeat;
+    background-size: cover;
+}
+.index2-up-jinbi{
+    display: block; position: absolute;
+    width: 100%; text-align: center;
+    top:4.3rem; left:0rem; right: 0rem; margin: 0 auto;
+    background-size: cover;
+    font-size: 1.5rem; color: #ffff00;
+}
+.index2-hand{
+    display: block;
+    position: absolute;
+    top: 6.6rem;
+    left:1.75rem;
+    width:2.26rem;
+    height:1.96rem;
+    background: url("../img/hand1.png") no-repeat;
+    background-size: cover;
+}
+.index2-jinbi{
+    display: block;
+    position: absolute;
+    top: 6.8rem;
+    left:0rem;
+    right: 0rem;
+    margin: 0 auto;
+    width:3.55rem;
+    height:2.33rem;
+    background: url("../img/jinbidui.png") no-repeat;
+    background-size: cover;
+}
+/*结果1*/
+#result1,#result2,#fenxiang{
+    display: block;
+    position: absolute;
+    top:0rem;
+    left:0rem;
+    right: 0rem;
+    margin: 0 auto;
+    width:100%;
+    height:100%;
+    background-size: cover;
+    z-index: 100;
+}
+.result1-info{
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left:0rem;
+    right: 0rem;
+    margin: 0 auto;
+    width: 5.9rem;
+    height: 8.1rem;
+    background: url("../img/result.jpg") no-repeat;
+    background-size: 100%;
+}
+.result1-fenshu{
+    display: block;
+    position: absolute;
+    top: 3.63rem;
+    left: 1.9rem;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    width: 57px;
+    text-align: center;
+}
+.result1-2-left,.result1-2-right{
+    display: block;
+    position: relative;
+    top: 7rem;
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.result1-2-left img,.result1-2-right img{ width: 80%;}
+.result2-info{
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 0rem;
+    right: 0rem;
+    margin: 0 auto;
+    width: 5.9rem;
+    height: 8.1rem;
+    background: url(../img/result2.jpg) no-repeat;
+    background-size: 100%;
+}
+.result2-2{
+    display: block;
+    position: relative;
+    top: 7rem;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.result2-jinbi{
+    display: block;
+    position: absolute;
+    top: 3.75rem;
+    left: 2.5rem;
+    font-size: 0.38rem;
+    font-weight: bold;
+    width: 61px;
+    text-align: center;
+    color: #ffffff;
+}
+.result2-hongbao{
+	display: block;
+	position: absolute;
+	top: 4.3rem;
+    left: 2.1rem;
+	color:#ffffff;
+	font-size: 0.38rem;
+	font-weight: bold;
+	width: 33px;
+	text-align: center;
+}
+.result2-2 img{ width: 45%;}
+.fenxiang-info{
+    display: block;
+    position: absolute;
+    top: 3rem;
+    left: 0rem;
+    right: 0rem;
+    margin: 0 auto;
+    width: 5.8rem;
+    height: 4rem;
+    background: url("../img/fenxiang.gif") no-repeat;
+    background-size: cover;
+}
+.hand{
+    width: 100%; text-align: right;
+}
+.hand img{ width:15%;}
+.fenxiang-a{
+	 width: 123px;
+    display: inline-block;
+    height: 40px;
+    position: absolute;
+    top: 328px;
+    left: 32px;
+	
+}
+.recome-a{
+    width: 123px;
+    display: inline-block;
+    height: 40px;
+    position: absolute;
+    top: 328px;
+    left: 174px;
+}
+.recome2-a{
+	width: 123px;
+    height: 40px;
+    display: inline-block;
+    position: absolute;
+    left: 108px;
+    top: 328px;
+}

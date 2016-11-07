@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" ng-app="headlineApp">
+
+<head>
+
+    <title></title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <!--360 使用Google Chrome Frame-->
+    <meta name="renderer" content="webkit">
+    <!--百度禁止转码-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 是否启用 WebApp 全屏模式 -->
+    <!--meta name="apple-mobile-web-app-capable" content="yes" -->
+    <meta name="format-detection" content="telephone=no, email=no,adress=no" searchtype="map" />
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, user-scalable=no, minimal-ui">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="keywords" content="Headline">
+    <meta http-equiv="description" content="Headline">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+
+    <link rel="stylesheet" href="js-lib/jqwidgets-3.8.0/jqwidgets/styles/jqx.base.css" />
+    <link rel="stylesheet" href="js-lib/jqwidgets-3.8.0/jqwidgets/styles/jqx.arctic.css" />
+
+    <script src="js-lib/jqwidgets-3.8.0/scripts/jquery-1.11.1.min.js"></script>
+    <script src="js-lib/angular-1.3.15/angular.min.js"></script>
+    <script src="js-lib/jqwidgets-3.8.0/jqwidgets/jqxcore.js"></script>
+    <script src="js-lib/jqwidgets-3.8.0/jqwidgets/jqxangular.js"></script>
+    <script src="js-lib/jqwidgets-3.8.0/jqwidgets/jqx-all.js"></script>
+
+    <script type="text/javascript">
+        var theme = 'arctic';
+        var app = angular.module("headlineApp", ["jqwidgets"]);
+
+
+
+
+        app.controller("headlineController", ["$scope", "$http",
+            function ($scope, $http) {
+
+                $scope.createWidget = false;
+                $http({
+                    method: 'get',
+                    url: 'getAllHeadlineDesc'
+                }).success(function (data, status) {
+                    // prepare the data
+
+                    var source = {
+                        datatype: "json",
+                        datafields: [
+                            {
+                                name: 'id',
+                                type: 'int'
+                            },
+                            {
+                                name: 'title',
+                                type: 'string'
+                            },
+                            {
+                                name: 'tcount',
+                                type: 'int'
+                            }
+                    ],
+                        root: "result",
+                        id: 'id',
+                        localdata: data
+                    };
+
+                    var dataAdapter = new $.jqx.dataAdapter(source);
+
+                    //存储所选行
+                    $scope.selectedRowData = {};
+
+                    //表格初始化
+                    $scope.gridSettings = {
+                        altrows: true,
+                        width: 800,
+                        theme: theme,
+                        autoheight: true,
+                        source: dataAdapter,
+                        columnsresize: true,
+                        columns: [
+                            {
+                                text: '标示值',
+                                align: 'center',
+                                cellsalign: 'center',
+                                datafield: 'id',
+                                width: 100
+                            },
+                            {
+                                text: '标题',
+                                datafield: 'title',
+                                align: 'center',
+                                cellsalign: 'center',
+                                width: 600
+                            },
+                            {
+                                text: '提交数',
+                                datafield: 'tcount',
+                                align: 'center',
+                                cellsalign: 'center',
+                                width: 100
+                            }
+                    ],
+                        //默认选择第一行
+                        ready: function () {
+                            $scope.gridSettings.apply('selectrow', 0);
+                            var selIndex = $scope.gridSettings.apply('getselectedrowindex');
+                            var rdata = $scope.gridSettings.apply('getrowdata', 0);
+                            $scope.selectedRowData = rdata;
+                        },
+                        //行点击时临时记住当前值
+                        rowclick: function (event) {
+                            var args = event.args;
+                            var boundIndex = args.rowindex;
+                            var rdata = $scope.gridSettings.apply('getrowdata', boundIndex);
+                            $scope.selectedRowData = rdata;
+                        },
+                        //行被选择时
+                        rowselect: function (event) {
+                            var args = event.args;
+                            var rowData = args.row;
+                            $scope.selectedRowData = rowData;
+                        },
+                        //双击编辑数据
+                        rowdoubleclick: function (event) {
+
+                            $scope.optHeadline = $.extend({}, $scope.selectedRowData);
+                            $scope.updateJqxWindowSettings.apply("open");
+
+                        }
+                    };
+                    // now create the widget.
+                    $scope.createWidget = true;
+
+                }).error(function (data, status) {
+                    // Some error occurred
+                });
+
+
+                //当前被操作的标题
+                $scope.optHeadline = {};
+
+
+                //添加记录
+                $scope.addBtnClick = function () {
+
+                    $scope.optHeadline={};
+                    $scope.addJqxWindowSettings.apply("open");
+
+                };
+
+                //删除记录
+                $scope.deleteBtnClick = function () {
+                    $scope.delJqxWindowSettings.apply('open');
+                };
+
+
+                //删除模式窗口初始化
+                $scope.delJqxWindowSettings = {
+                    theme: theme,
+                    maxHeight: 100,
+                    maxWidth: 280,
+                    minHeight: 30,
+                    minWidth: 250,
+                    height: 145,
+                    width: 270,
+                    resizable: false,
+                    isModal: true,
+                    autoOpen: false,
+                    modalOpacity: 0.3
+                };
+
+                //删除窗口确定按钮点击后
+                $scope.delWinOkBtnClick = function () {
+
+                    $scope.delJqxWindowSettings.apply('close');
+
+                    var id = $scope.selectedRowData.id;
+                    //如果没有定义,直接退出
+                    if (!id) {
+                        return;
+                    }
+
+                    $http.get('deleteHeadlineById?id=' + id).then(function (response) {
+                        location.reload(true);
+                    }, function (errResponse) {
+                        alert("网络错误!!!");
+                    });
+
+                };
+
+                //删除窗口取消按钮点击后
+                $scope.delWinCancelBtnClick = function () {
+                    $scope.delJqxWindowSettings.apply('close');
+                };
+
+                //添加标题窗口
+                $scope.addJqxWindowSettings = {
+
+                    theme: theme,
+                    maxHeight: 160,
+                    maxWidth: 500,
+                    minHeight: 140,
+                    minWidth: 350,
+                    height: 150,
+                    width: 400,
+                    resizable: true,
+                    isModal: true,
+                    autoOpen: false,
+                    modalOpacity: 0.3
+
+                }
+
+
+                //添加标题窗口确定按钮点击后
+                $scope.addWinOkBtnClick = function () {
+                    
+                       //title输入没有通过测试
+                    if(!testTitle()){
+                        return ;
+                    }
+                    
+                    //tcount没有通过测试
+                    if(!testTcount()){
+                        return ;
+                    }
+                     
+                   $scope.addJqxWindowSettings.apply("close");
+                    
+                    var id = $scope.optHeadline.id;
+                    var title = $scope.optHeadline.title;
+                    var tcount = $scope.optHeadline.tcount;
+                    
+                    
+                    $http.get('insertHeadline?id=' + id + "&tcount=" +tcount + "&title="+title).then(function (response) {
+                        location.reload(true);
+                    }, function (errorResponse) {
+                        alert("网络错误!!!");
+                    });
+
+
+                }
+
+                //添加标题窗口取消按钮点击后
+                $scope.addWinCancelBtnClick = function () {
+
+                    $scope.addJqxWindowSettings.apply("close");
+                }
+
+
+
+                //修改标题窗口
+                $scope.updateJqxWindowSettings = {
+
+                    theme: theme,
+                    maxHeight: 160,
+                    maxWidth: 500,
+                    minHeight: 140,
+                    minWidth: 350,
+                    height: 150,
+                    width: 400,
+                    resizable: false,
+                    isModal: true,
+                    autoOpen: false,
+                    modalOpacity: 0.3
+
+                }
+                
+                
+              //测试标题    
+               var testTitle=function(){
+                   
+                    var strPatter = /^\S+$/g;
+                    var title = $scope.optHeadline.title;
+                    if (!strPatter.test(title)) {
+                        alert("输入的标题内容不合法");
+                        return false;
+                    }
+                   return true;
+                   
+               }
+                
+              var testTcount=function(){
+
+                   var numPattern = /^\d+$/g;
+                   var tcount = $scope.optHeadline.tcount;
+                    if (!numPattern.test(tcount)) {
+                        alert("输入的数据不合法");
+                        return false;
+                    }
+                  return true;
+              }
+               
+                
+                
+                
+                
+
+
+                //修改标题窗口确定按钮点击后
+                $scope.updateWinOkBtnClick = function () {
+                 
+                    //title输入没有通过测试
+                    if(!testTitle()){
+                        return ;
+                    }
+                    
+                    //tcount没有通过测试
+                    if(!testTcount()){
+                        return ;
+                    }
+                     
+                    $scope.updateJqxWindowSettings.apply("close");
+                    
+                    var id = $scope.optHeadline.id;
+                    var title = $scope.optHeadline.title;
+                    var tcount = $scope.optHeadline.tcount;
+
+                    $http.get('updateHeadlineTcount?id=' + id + "&tcount=" +tcount + "&title="+title).then(function (response) {
+                        location.reload(true);
+                    }, function (errorResponse) {
+                        alert("网络错误!!!");
+                    });
+
+                }
+
+                //修改标题窗口取消按钮点击后
+                $scope.updateWinCancelBtnClick = function () {
+
+                    $scope.updateJqxWindowSettings.apply("close");
+                }
+
+
+
+
+        }]);
+    </script>
+
+</head>
+
+<body>
+
+    <h3 style="text-align: center;">标题管理</h3>
+    <hr>
+
+    <div ng-controller="headlineController" style="margin-left: auto; margin-right: auto; width: 850px;">
+
+        <jqx-grid jqx-create="createWidget" jqx-settings="gridSettings" jqx-on-="updateSelectedRow"></jqx-grid>
+
+        <div style="text-align: right; width: 800px; margin-top: 10px;">
+            <div style="float: left; font-size: 12px;">
+                <strong>注意:</strong>双击可编辑单条记录
+            </div>
+            <jqx-button jqx-on-click="addBtnClick()" jqx-width="80">添加</jqx-button>
+            <jqx-button jqx-on-click="deleteBtnClick()" jqx-width="80">删除</jqx-button>
+        </div>
+
+        <jqx-window jqx-settings="delJqxWindowSettings">
+            <div>提示</div>
+            <div>
+                <div>确定要删除该条记录吗?</div>
+                <div>
+                    <div style="float: right; margin-top: 15px;">
+                        <jqx-button jqx-on-click="delWinOkBtnClick()" style="margin-right: 10px">确定</jqx-button>
+                        <jqx-button jqx-on-click="delWinCancelBtnClick()">取消</jqx-button>
+                    </div>
+                </div>
+            </div>
+        </jqx-window>
+
+        <jqx-window jqx-settings="addJqxWindowSettings">
+            <div>提示</div>
+            <div>
+                <div>
+                    <label for="headline-title">标题:</label>
+                    <input style="width:350px;" name="headline-title" id="headline-title" ng-model="optHeadline.title">
+                    <br>
+                    <label for="headline-tcount">数值:</label>
+                    <input style="width:350px;" name="headline-tcount" id="headline-tcount" ng-model="optHeadline.tcount">
+                </div>
+                <div>
+                    <div style="float: right; margin-top: 15px;">
+                        <jqx-button jqx-on-click="addWinOkBtnClick()" style="margin-right: 10px">确定</jqx-button>
+                        <jqx-button jqx-on-click="addWinCancelBtnClick()">取消</jqx-button>
+                    </div>
+                </div>
+            </div>
+        </jqx-window>
+
+
+        <jqx-window jqx-settings="updateJqxWindowSettings">
+            <div>提示</div>
+            <div>
+                <div>
+                    <label for="headline-title">标题:</label>
+                    <input style="width:350px;" name="headline-title" id="headline-title" ng-model="optHeadline.title">
+                    <br>
+                    <label for="headline-tcount">数值:</label>
+                    <input style="width:350px;" name="headline-tcount" id="headline-tcount" ng-model="optHeadline.tcount">
+                </div>
+                <div>
+                    <div style="float: right; margin-top: 15px;">
+                        <jqx-button jqx-on-click="updateWinOkBtnClick()" style="margin-right: 10px">确定</jqx-button>
+                        <jqx-button jqx-on-click="updateWinCancelBtnClick()">取消</jqx-button>
+                    </div>
+                </div>
+            </div>
+        </jqx-window>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+
+</html>
+
+

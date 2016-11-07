@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--[if lt IE 9]><script src="js/html5shiv.js"></script>
+ 
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.easing1.3.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <script type="text/javascript">
+        $(function () {
+            $("#result1").hide();
+            $("#result2").hide();
+            $("#fenxiang").hide();
+            $(".bg_tc_hui").hide();
+            var data1=new Date();
+            var ss=44;
+            var jinbi=0;
+            var int=setInterval(function(){
+                if(ss==42){
+//                     $(".index2-font").hide();
+                }
+                if(ss>0){
+                    $("#daojishi").html("倒计时："+ss+"s");
+                    ss--;
+                }
+                if(ss==0)                {
+                    $("#daojishi").html("倒计时：0s");
+                    $("#result1-jinbi").html(jinbi);
+                    $("#result2-jinbi").html(jinbi);
+                    $(".result1-fenshu").html(jinbi);
+                    $(".result2-jinbi").html(jinbi);
+                    var gold = getResult(jinbi);
+                    if(gold){
+                        $(".result2-hongbao").html(gold);
+                        $("#result2").show();
+                        $(".bg_tc_hui").show();
+                    }else{
+                        $("#result1").show();
+                        $(".bg_tc_hui").show();
+                    }
+                    $("#caidao").removeClass("bounce-up-down5");
+                }
+                if(ss==32){
+                    $("#caidao").addClass("bounce-up-down2").removeClass("bounce-up-down1");
+                }
+                if(ss==20){
+                    $("#caidao").addClass("bounce-up-down3").removeClass("bounce-up-down2");
+                }
+                if(ss==12){
+                    $("#caidao").addClass("bounce-up-down4").removeClass("bounce-up-down3");
+                }
+                if(ss==4){
+                    $("#caidao").addClass("bounce-up-down5").removeClass("bounce-up-down4");
+                }
+            },1000);
+            $("#caidao").bind("touchStart",function(){
+                $("#result1-jinbi").html(jinbi);
+                $("#result2-jinbi").html(jinbi);
+                $(".result1-fenshu").html(jinbi);
+                $(".result2-jinbi").html(jinbi);
+                var gold = getResult(jinbi);
+                if(gold){
+                    $(".result2-hongbao").html(gold);
+                    $("#result2").show();
+                    $(".bg_tc_hui").show();
+                }else{
+                    $("#result1").show();
+                    $(".bg_tc_hui").show();
+                }
+                clearInterval(int);
+            });
+            function duoshou(){
+                $("#result1-jinbi").html(jinbi);
+                $("#result2-jinbi").html(jinbi);
+                $(".result1-fenshu").html(jinbi);
+                $(".result2-jinbi").html(jinbi);
+                var gold = getResult(jinbi);
+                if(gold){
+                    $(".result2-hongbao").html(gold);
+                    $("#result2").show();
+                    $(".bg_tc_hui").show();
+                }else{
+                    $("#result1").show();
+                    $(".bg_tc_hui").show();
+                }
+                clearInterval(int);
+            }
+            $("#jinbidui").bind("touchStart",function(){
+                var data2=new Date();
+                var mydata=(data2.getTime()-data1.getTime())/1000;
+//                console.log(mydata);
+                if(mydata>3.55&&mydata<4.45){
+                    duoshou();
+                }
+//                 else if(mydata>9.55&&mydata<10.45){
+//                     duoshou();
+//                 }
+//                 else if(mydata>15.55&&mydata<16.45){
+//                     duoshou();
+//                 }
+//                 else if(mydata>17.25&&mydata<18.75){
+//                     duoshou();
+//                 }
+//                 else if(mydata>21.25&&mydata<22.75){
+//                     duoshou();
+//                 }
+                else if(mydata>25.25&&mydata<26.75){
+                    duoshou();
+                }
+//                 else if(mydata>29.25&&mydata<30.75){
+//                     duoshou();
+//                 }
+                else if(mydata>30.1&&mydata<31.9){
+                    duoshou();
+                }
+//                 else if(mydata>32.1&&mydata<33.9){
+//                     duoshou();
+//                 }
+                else if(mydata>34.1&&mydata<35.9){
+                    duoshou();
+                }else if(mydata>36.1&&mydata<37.9){
+                    duoshou();
+                }else if(mydata>38.1&&mydata<39.9){
+                    duoshou();
+                }else if(mydata>41.025&&mydata<41.975){
+                    duoshou();
+                }else if(mydata>42.025&&mydata<42.975){
+                    duoshou();
+                }else if(mydata>43.025&&mydata<43.975){
+                    duoshou();
+                }else if(mydata>43.975&&mydata<45){
+                    duoshou();
+                }else{
+                    var jinbi2=Math.floor(Math.random() *150);
+                    $(".index2-up-jinbi").remove("span");
+                    $(".index2-up-jinbi").html("<span class='animated fadeOutUp'>+"+jinbi2+"</span>");
+                    jinbi=jinbi+jinbi2;
+                    $("#jinbi").html("金币："+jinbi);
+                    $("#jinbidui").removeClass("zoomInOut");
+                    setTimeout(function(){
+                        $("#jinbidui").addClass("zoomInOut");
+                    },10);
+                }
+            });
+            //分享
+            $("#fenxiang-btn").bind("touchStart",function(){
+//                clearInterval(int);
+//                $("#result1").hide();
+//                $("#result2").hide();
+//                $("#fenxiang").show();
+//                $(".bg_tc_hui").show();
+                window.location.href='http://m.ehaier.com/mobile/toActivityDetail/2016123.html';
+            });
+            $("#recome").bind("touchStart",function(){
+                zailaiyici();
+//                window.location.href="index.html";
+            });
+            $("#recome2").bind("touchStart",function(){
+                zailaiyici();
+//                window.location.href="index.html";
+            });
+
+            /**
+             * lowerValue 最小值
+             * upperValue 最大值
+             */
+            function selectFrom(lowerValue, upperValue){
+                //取值范围总数
+                var choices = upperValue - lowerValue + 1;
+                return Math.floor(Math.random() * choices + lowerValue);
+            }
+            var width=$(window).width();
+            var a=setInterval(function(){foo()},300);
+            function foo(){
+                var num = selectFrom(0,43);
+                //$("body img:last").remove();
+                $("body").append('<img style="position:absolute; width:10%; display:block; top:3%;left:'+num*2+'%;" class="animated2 fadeOutDown" src="img/feiconi.png" alt=""/>');
+            }
+            
+            function zailaiyici(){
+                var url = "<?php echo url('Index','getUserGameNumberToday');?>";
+                $.getJSON(url,{},function(res){
+                    if(res.data==-10){
+                        window.location.href="<?php echo url('Index','shardNotice')?>";
+                    }else{
+                        window.location.href="<?php echo url('Index','chopHand')?>";
+                    }
+                })
+            }
+            function GetRandomNum(Min,Max)
+            {   
+                var Range = Max - Min;   
+                var Rand = Math.random();   
+                return(Min + Math.round(Rand * Range));   
+            }   
+            function getResult(jinbi){
+            	monitor('touchStart',0,'再来一次');
+                var url = "<?php echo url('Index','handDraw');?>";
+                var rand = "<?php echo $rand;?>";
+                $.getJSON(url,{gold:jinbi,rand:rand},function(res){
+                    if(res.error==0&&res.data==200){
+                        return res.msg.cash;
+//                        $("#success_redpack").html(res.msg.cash);
+//                        $("#success_gold").html(jinbi);
+//                        $("#result_div_bad").show();
+                    }else{
+//                    	$("#fail_gold").html(jinbi);
+//                        $("#result_div").show();
+                        return 0;
+                    }
+//                    $(".bg_tc_hui").show();
+                    return 0;
+                });
+            }
+        })
+
+    </script>
+</head>
+<body>
+	<section class="u-audio f-hide" data-src="img/music.mp3">
+		<p class="btn_audio">
+			<span class="css_sprite audio_open"></span>
+		</p>
+	</section>
+	<script src="js/main.js?v=39" type="text/javascript" charset="utf-8" defer＝'defer'=""></script>
+	
+    <div class="index1-bg"></div>
+    <div class="index2-1-left"><img src="img/time.png"><span id="daojishi">倒计时：45s</span></div>
+    <div class="index2-1-right"><img class="right-icon" src="img/coni.png"><span id="jinbi">金币：0</span></div>
+    <div class="index2-dao bounce-up-down1" id="caidao"></div>
+    <div class="index2-door"></div>
+    <div class="index2-door2"></div>
+<!--     <div class="index2-font"></div> -->
+    <div class="index2-up-jinbi"></div>
+    <div class="index2-jinbi"></div>
+    <div class="index2-hand animated zoomInOut" id="jinbidui"></div>
+    <div class="bg_tc_hui"></div>
+    <div id="result1">
+            <div class="result1-info">
+            	<a class="fenxiang-a" id="fenxiang-btn"></a>
+            	<a class="recome-a" id="recome"></a>
+            </div>
+            <div class="result1-fenshu"></div>
+<!--             <div class="result1-2-left"><img id="fenxiang-btn" src="img/qiuanwei.png"/></div> -->
+<!--             <div class="result1-2-right"><img id="recome" src="img/zaiqiangyici.png"/></div> -->
+           
+    </div>
+    <div id="result2">
+        <div class="result2-info">
+        	<a class="recome2-a" id="recome2"></a>
+        </div>
+        <div class="result2-jinbi">0</div>
+        <div class="result2-hongbao">2</div>
+<!--         <div class="result2-2"><img id="recome2" src="img/zaiqiangyici.gif"/></div> -->
+    </div>
+    <div id="fenxiang">
+        <div class="fenxiang-info"></div>
+        <div class="hand"><img src="img/zhihang.png"/></div>
+    </div>
+   
+<?php tpl('shareAndMonitor');?>
+</body>
+</html>

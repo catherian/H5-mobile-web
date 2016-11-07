@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>好标题</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <!--360 使用Google Chrome Frame-->
+    <meta name="renderer" content="webkit">
+    <!--百度禁止转码-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 是否启用 WebApp 全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no,adress=no" searchtype="map" />
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no, minimal-ui">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+
+    <script type="text/javascript" src="js/jquery/jquery-1.11.2.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+
+</head>
+
+<body>
+    <div class="p7">
+        <div class="p7-1"></div>
+        <div class="p7-2">时间：2015年7月<span>?</span>日</div>
+        <div class="p7-3">地点：北京朝阳区金台西路2号院17号楼3楼报告厅</div>
+        <div class="p7-4"></div>
+        <div class="p7-5"></div>
+    </div>
+    <div class="share-cover">
+        <img src="img/share-cover.png">
+    </div>   
+<script type="text/javascript" src="js/index.js"></script>
+<script>
+    $(".p7-5").on("touchstart",function(){
+        $(".share-cover").show();
+    });
+    $(".share-cover").on("touchstart",function(){
+        $(".share-cover").hide();
+    });
+</script>
+</body>
+</html>

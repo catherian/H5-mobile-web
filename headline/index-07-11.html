@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN"  ng-app="headlineApp2">
+
+<head>
+    <title>标题盛典</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <!--优先使用 IE 最新版本和 Chrome-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <!--360 使用Google Chrome Frame-->
+    <meta name="renderer" content="webkit">
+    <!--百度禁止转码-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 是否启用 WebApp 全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no,adress=no" searchtype="map" />
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache,must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no, minimal-ui">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+
+    <script type="text/javascript" src="js/jquery/jquery-1.11.2.min.js"></script>
+    <script src="js-lib/angular-1.3.15/angular.min.js"></script>
+    <link rel="stylesheet" href="css/common.css">
+    
+    <!--  Loading 样式  -->
+<!--    <link rel="stylesheet" href="css/loading-img.css">-->
+</head>
+
+<body>
+    <div class="hengping" id="hengping">
+      <p>请竖屏显示，谢谢！</p>
+    </div> 
+    <!--  加载进度条   -->
+    <div class="process fixed-center" style="display:block">
+            <div class="graph fixed-center">
+                <div class="process-font">我们的节日<br>——人民日报总编室标题盛典在等您！</div>
+                <strong id="bar" style="width:1%;"></strong>    
+                <div class="mmt"></div>                            
+            </div> 
+            <div class="process-txt fixed-center">
+                正在努力加载，请稍等...
+            </div>  
+    </div>
+    <div class="index">
+        <div class="index-c">
+            <div class="index-1 animated fadeIn"></div>
+            <div class="index-2  animated fadeIn delay1"></div>
+            <div class="index-3 animated fadeIn delay2"></div>
+        </div>
+    </div>
+    <div class="index2">
+        <div class="index-2-1 animated fadeInDown delay1"></div>
+        <div class="index-2-2 animated fadeInDown delay2"></div>
+        <div class="index-2-3 animated fadeInDown delay3"></div>
+        <div class="index-2-4 animated fadeInDown delay4"></div>
+        <div class="prev"></div>
+        <div class="index-2-foot"></div>
+        <div class="next"></div>
+    </div>
+    <div class="p1">
+        <div class="p1-top"></div>
+        <div class="p1-foot"></div>
+        <div class="p1-c-1 animated fadeIn"></div>
+        <div class="p1-c-1c animated fadeIn"></div>
+        <div class="p1-c-2 animated fadeIn delay2"></div>
+        <div class="p1-c-2c animated fadeIn delay2"></div>
+        <div class="p1-c-3 animated fadeIn delay4"></div>
+        <div class="p1-c-3c animated fadeIn delay4"></div>
+        <div class="p1-c-4 animated fadeIn delay6"></div>
+        <div class="p1-c-4c animated fadeIn delay6"></div>
+        <div class="p1-c-5 animated fadeIn delay8"></div>
+        <div class="p1-c-5c animated fadeIn delay8"></div>
+        <div class="prev"></div>
+        <div class="next"></div>
+    </div>
+    <div class="p1-2">
+         <div class="p1-top"></div>
+         <div class="p1-2-c1 animated fadeInDown delay1"></div>
+         <div class="p1-2-c2 animated fadeInDown delay2"></div>
+         <div class="p1-2-c3 animated fadeInDown delay3"></div>
+         <div class="p1-2-c4 animated fadeInDown delay3"></div>
+         <div class="p1-2-foot"></div>
+     </div> 
+     <div class="p2">
+        <div class="p2-top"></div>
+        <div class="p2-c">
+            <ul>
+                <li class="left animated fadeInRight">
+                    <div class="touxiang">
+                        <span class="tx-pic"><img src="img/p2/p2-2-1.png"/></span>
+                        <span class="tx-font">邓拓</span>
+                    </div>
+                    <div class="content">
+                        <span class="jiantou"></span>
+                        <p>谁要给我想出一个好标题，我给他磕3个响头。</p>
+                    </div>
+                </li>
+                <li class="right animated fadeInLeft delay2">
+                    <div class="touxiang">
+                        <span class="tx-pic"><img src="img/p2/p2-3-1.png"/></span>
+                        <span class="tx-font">范敬宜</span>
+                    </div>
+                    <div class="content">
+                        <span class="jiantou"></span>
+                        <p>做标题一定要设法把“题眼”拎出来，加以强化，切忌用“官题”。<br><br>我当总编辑就两件事，一是改标题，二是用干部。<br><br>一个好标题可以代表一张报纸。</p>
+                    </div>
+                </li>
+                <li class="left animated fadeInLeft delay4">
+                    <div class="touxiang">
+                        <span class="tx-pic"><img src="img/p2/p2-5-1.png"/></span>
+                        <span class="tx-font">杨振武</span>
+                    </div>
+                    <div class="content">
+                        <span class="jiantou"></span>
+                        <p>好的标题应当简练、准确、传神、具有新闻性。要简明扼要，能短就不要长；要恰当贴切，能实就不要虚；要神采飞扬，能动就不要静；要鲜活及时，能近就不要远。<br><br>一般来说，标题越具体越生动，越接近新闻事实的本来面目。标题的具体化，是告别“高大全”的有益途径。</p>
+                    </div>
+                </li>
+                <li class="right animated fadeInRight delay6">
+                    <div class="touxiang">
+                        <span class="tx-pic"><img src="img/p2/p2-6-1.png"/></span>
+                        <span class="tx-font">李宝善</span>
+                    </div>
+                    <div class="content">
+                        <span class="jiantou"></span>
+                        <p>在标题上多下些功夫，传播效果会事半功倍。<br><br>夜班在推敲标题上有大作用，“用心总有s改进余地”这句话说得好。</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="page">
+            <div class="prev"></div>
+            <div class="next"></div>
+        </div>
+        <div class="p2-foot"></div>
+    </div>
+    <div class="p3">
+        <div class="p3-top"></div>
+        <div class="p3-title">以下13个标题入围最佳人气奖，选出3个你最喜爱的标题，顶一下！</div>
+		<div class="p3-c"  ng-controller="customersController">
+			<ul>
+				<li  ng-repeat="x in rs">
+				    <div class="p3-id">{{x.id}}</div>
+					<div class="info">{{ x.title1}}<br>{{x.title2}}</div>
+<!--					<div class="info" ng-click="nextpage(x.id)">{{ x.title1}}<br>{{x.title2}}<span>共顶{{x.tcount}}次</span></div>-->
+					<div class="ding-off" ng-class="x.nclass" ng-click="result3(x)"></div>
+					<div class="tcount">共顶{{x.tcount}}次</div>
+				</li>
+			</ul>
+		</div>
+		<div class="p3-btn">查看排行榜</div>
+        <div class="p3-foot"></div>
+    </div> 
+    <div class="p5">
+        <div class="p5-top"></div>
+        <div class="p5-title">最佳人气标题，将花落谁家？</div>
+        <div class="p5-c" ng-controller="customersController2">
+            <ul>
+                <li ng-repeat="x2 in rs2">
+                    <div class="p5-num">No. {{x2.num2}}</div>
+                    <div class="p5-info">{{x2.title1}}<br>{{x2.title2}}<span>共顶{{x2.tcount}}次</span></div>
+                </li>
+            </ul>
+        </div>
+        <div class="p5-btn"></div>
+        <div class="p5-foot"></div>
+    </div>
+     <div class="p6">
+        <div class="p6-top"></div>
+        <div class="p6-c">
+            <ul>
+                <li><img src="img/p6/1.jpg"/><br>读图时代，党报如何应对</li>
+                <li><img src="img/p6/2.jpg"/><br>好标题是这样炼成的</li>
+                <li><img src="img/p6/3.jpg"/><br>寻找党报标题新标准</li>
+            </ul>
+        </div>
+        <div class="page">
+            <div class="prev"></div>
+            <div class="next"></div>
+        </div>
+        <div class="p6-foot"></div>
+    </div>
+    <div class="p6-2">
+       <div class="p6-2-1 animated fadeInDown"></div>
+       <div class="p6-2-2 animated fadeInDown delay1"></div>
+       <div class="prev"></div>
+       <div class="next"></div>
+   </div>
+   <div class="p7">
+        <div class="p7-1"></div>
+        <div class="p7-2"></div>
+<!--
+        <div class="p7-2">时间：2015年7月<span>?</span>日</div>
+        <div class="p7-3">地点：北京朝阳区金台西路2号院17号楼3楼报告厅</div>
+-->
+        <div class="p7-4"></div>
+        <div class="p7-5"></div>
+    </div>
+    <div class="share-cover">
+        <img src="img/share-cover.png">
+    </div>   
+    <div class="pause"><a class="on" href="#"></a><span>开启</span></div>
+    <audio id="audio1" src="go.mp3" loop="loop" autoplay="autoplay"></audio>
+    
+<script type="text/javascript" src="http://wechat.pdmi.cn/wechat/js/weixin/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+var str='<script type="text/javascript" src="http://wechat.pdmi.cn/wechat/sign?random='+Math.random()+'"\/><\/script>';
+		str += '<script type="text/javascript" src="http://weixin.pdmi.cn/jz/js/app.js"><\/script>';
+		document.write(str);
+		
+		   wx.ready(function () {
+			wx_data.title = '人民日报总编室标题盛典';
+			wx_data.desc = '加入我们，选出你最喜欢的标题';
+			wx_data.imgUrl =  window.location.href.split("?")[0] + "img/share.png"; 
+			wx_data.link = window.location.href;
+			// 分享到朋友圈
+			shareTimeline(wx_data);
+			// 分享给好友
+			shareAppMessage(wx_data);
+		});
+		wx.error(function (res) {
+		 // alert(res.errMsg);
+		});  
+       
+</script>
+
+<script type="text/javascript" src="js/index.js"></script>
+<script>
+//var cid="";
+var cid="";
+var app2 = angular.module("headlineApp2", []);
+app2.controller("customersController", ["$scope", "$http",
+    function ($scope, $http) {
+        $http.get("getAllHeadlineDesc").success(function(response) {
+            var result=response.result; 
+            
+            $.each(result,function(i,r){
+                if(i==13){ return false; }
+                r.nclass="";
+                r.title1=r.title.split("|")[0];
+                r.title2=r.title.split("|")[1];
+                for(j=0;j<cid.length;j++){
+                    if(r.id==cid[j]){
+                        r.nclass="ding-on";
+                        break;
+                    }
+                }
+            });
+            
+           $scope.rs=result;
+           
+            $scope.result3=function(num){
+                if(cid != ""){
+                    var cids=cid.split(",");
+                    var ding=false;
+                    if(cids.length<4){
+                        console.log("cids"+cids.length);
+                        for(i=0; i<cids.length; i++){
+                            if(cids[i]==num.id){
+                                    ding=true;
+                            }
+                        }
+                        if(ding==false){
+                             $http.get('incrementHeadlineTcountById?id=' + num.id).success(function(response){
+                                 if(response.msg=="ok"){
+                                    num.nclass="ding-on";
+                                    num.tcount++;
+                                    cid=cid+num.id+',';
+                                } 
+                             });
+                        }else{
+                            alert("您已顶过！");
+                        }
+
+                    }else{
+                        alert("每人只能投3次票！");
+                    }
+                }else{
+                    $http.get('incrementHeadlineTcountById?id=' + num.id).success(function(response){
+                         if(response.msg=="ok"){
+                            num.nclass="ding-on";
+                            num.tcount++;
+                            cid=cid+num.id+',';
+                        } 
+                     });
+                }
+                
+            }
+            $scope.nextpage=function(id){
+                
+                window.location.href="page4.html?id="+id+"&cid="+cid;
+            }
+            
+        });
+    }
+ ]);
+    
+app2.controller("customersController2", ["$scope", "$http",
+    function ($scope, $http) {
+        $http.get("getAllHeadlineDesc").success(function(response) {
+           var result=response.result; 
+            $.each(result,function(i,r){
+                if(i==13){ return false; }
+                r.title1=r.title.split("|")[0];
+                r.title2=r.title.split("|")[1];
+                for(i=0; i< result.length; i++){
+                    result[i].num2=i+1;     
+                }
+                $scope.rs2=result;
+            });
+            
+           
+            
+        });
+    }
+ ]); 
+
+
+</script>
+</body>
+</html>
